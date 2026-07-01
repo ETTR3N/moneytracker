@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Account {
+  id              String         @id @default(cuid())
+  name            String
+  currency        String
+  startingBalance Int            @default(0)
+  createdAt       DateTime       @default(now())
+  transactions    Transaction[]
+  subscriptions   Subscription[]
+}
+
+model Transaction {
+  id             String        @id @default(cuid())
+  accountId      String
+  account        Account       @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  amountMinor    Int
+  description    String?
+  category       String?
+  date           DateTime
+  subscriptionId String?
+  subscription   Subscription? @relation(fields: [subscriptionId], references: [id], onDelete: SetNull)
+  createdAt      DateTime      @default(now())
+
+  @@index([accountId])
+  @@index([date])
+}
+
+model Subscription {
+  id              String        @id @default(cuid())
+  name            String
+  amountMinor     Int
+  currency        String
+  billingCycle    String
+  nextBillingDate DateTime
+  active          Boolean       @default(true)
+  accountId       String?
+  account         Account?      @relation(fields: [accountId], references: [id], onDelete: SetNull)
+  transactions    Transaction[]
+  createdAt       DateTime      @default(now())
+}
+
+model ExchangeRate {
+  id        String   @id @default(cuid())
+  base      String   @unique
+  rates     String
+  fetchedAt DateTime @default(now())
+}
+
+model Settings {
+  id              String @id @default("singleton")
+  displayCurrency String @default("USD")
+}
