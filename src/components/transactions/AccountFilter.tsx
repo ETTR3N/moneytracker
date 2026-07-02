@@ -18,7 +18,7 @@ export default function AccountFilter({
         const value = e.target.value;
         router.push(value === "all" ? "/transactions" : `/transactions?accountId=${value}`);
       }}
-      className="rounded-full border border-neutral-800 bg-neutral-900/60 px-4 py-2 text-sm text-neutral-100 outline-none transition-colors focus:border-emerald-500"
+      className="rounded-full border border-neutral-800 bg-neutral-900/60 px-4 py-2 text-sm text-neutral-100 outline-none transition-colors focus:border-emerald-500 light:border-neutral-300 light:bg-white light:text-neutral-900"
     >
       <option value="all">All accounts</option>
       {accounts.map((a) => (

@@ -32,7 +32,12 @@ export default function SettingsForm({
     >
       <div className="w-full sm:w-56">
         <label className={labelClass}>Currency</label>
-        <CurrencySelect currencies={currencies} name="displayCurrency" defaultValue={defaultValue} />
+        <CurrencySelect
+          key={defaultValue}
+          currencies={currencies}
+          name="displayCurrency"
+          defaultValue={defaultValue}
+        />
       </div>
       <Button type="submit" variant="primary" icon={<SaveIcon size={14} />}>
         Save

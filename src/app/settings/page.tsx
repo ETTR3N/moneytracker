@@ -9,7 +9,7 @@ export default async function SettingsPage() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight text-neutral-50">
+        <h1 className="text-3xl font-bold tracking-tight text-neutral-50 light:text-neutral-900">
           Settings
         </h1>
         <p className="mt-1 text-sm text-neutral-500">
@@ -18,7 +18,7 @@ export default async function SettingsPage() {
       </div>
 
       <section className={`${cardClass} p-6`}>
-        <h2 className="mb-1 text-sm font-semibold text-neutral-200">
+        <h2 className="mb-1 text-sm font-semibold text-neutral-200 light:text-neutral-800">
           Display currency
         </h2>
         <p className="mb-4 text-sm text-neutral-500">

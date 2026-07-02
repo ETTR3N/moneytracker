@@ -28,7 +28,7 @@ export default function StatCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -2 }}
-      className="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-5"
+      className="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-5 light:border-neutral-200 light:bg-white"
     >
       <p className="text-xs font-medium uppercase tracking-wide text-neutral-500">
         {label}
@@ -36,7 +36,7 @@ export default function StatCard({
       <AnimatedNumber
         value={value}
         formatter={formatter}
-        className="mt-2 block text-2xl font-bold tracking-tight text-neutral-50 tabular-nums"
+        className="mt-2 block text-2xl font-bold tracking-tight text-neutral-50 tabular-nums light:text-neutral-900"
       />
       {sparkline && sparkline.length > 1 && (
         <div className="mt-3 -mb-1">

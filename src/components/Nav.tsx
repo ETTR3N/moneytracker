@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { logout } from "@/lib/actions/auth";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const LINKS = [
   { href: "/", label: "Dashboard" },
@@ -16,20 +17,20 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <header className="border-b border-neutral-900 bg-neutral-950/80 backdrop-blur">
+    <header className="border-b border-neutral-900 bg-neutral-950/80 backdrop-blur light:border-neutral-200 light:bg-white/80">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 py-3 sm:gap-3 sm:px-6 sm:py-4">
         <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-6">
           <Link href="/" className="flex shrink-0 items-center gap-2">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-400 text-sm font-bold text-neutral-950">
               M
             </span>
-            <span className="hidden text-sm font-semibold tracking-tight text-neutral-100 sm:inline">
+            <span className="hidden text-sm font-semibold tracking-tight text-neutral-100 sm:inline light:text-neutral-900">
               Money Tracker
             </span>
           </Link>
 
           <div className="no-scrollbar min-w-0 overflow-x-auto">
-            <nav className="flex w-max items-center gap-1 rounded-full border border-neutral-800 bg-neutral-900/60 p-1">
+            <nav className="flex w-max items-center gap-1 rounded-full border border-neutral-800 bg-neutral-900/60 p-1 light:border-neutral-200 light:bg-neutral-100">
               {LINKS.map((link) => {
                 const active =
                   link.href === "/"
@@ -44,15 +45,15 @@ export default function Nav() {
                     {active && (
                       <motion.span
                         layoutId="nav-active-pill"
-                        className="absolute inset-0 rounded-full bg-white"
+                        className="absolute inset-0 rounded-full bg-white light:bg-neutral-900"
                         transition={{ type: "spring", stiffness: 500, damping: 35 }}
                       />
                     )}
                     <span
                       className={`relative z-10 transition-colors ${
                         active
-                          ? "text-neutral-950"
-                          : "text-neutral-400 hover:text-neutral-100"
+                          ? "text-neutral-950 light:text-white"
+                          : "text-neutral-400 hover:text-neutral-100 light:text-neutral-500 light:hover:text-neutral-900"
                       }`}
                     >
                       {link.label}
@@ -65,12 +66,13 @@ export default function Nav() {
         </div>
 
         <div className="flex shrink-0 items-center gap-2">
+          <ThemeToggle />
           <Link
             href="/settings"
             className={`flex h-9 w-9 items-center justify-center rounded-full border transition-colors ${
               pathname === "/settings"
-                ? "border-neutral-500 bg-neutral-800 text-neutral-100"
-                : "border-neutral-800 text-neutral-400 hover:border-neutral-600 hover:text-neutral-100"
+                ? "border-neutral-500 bg-neutral-800 text-neutral-100 light:border-neutral-400 light:bg-neutral-200 light:text-neutral-900"
+                : "border-neutral-800 text-neutral-400 hover:border-neutral-600 hover:text-neutral-100 light:border-neutral-300 light:text-neutral-500 light:hover:border-neutral-400 light:hover:text-neutral-900"
             }`}
             aria-label="Settings"
           >
@@ -81,7 +83,7 @@ export default function Nav() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-800 text-neutral-400 transition-colors hover:border-neutral-600 hover:text-neutral-100"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-800 text-neutral-400 transition-colors hover:border-neutral-600 hover:text-neutral-100 light:border-neutral-300 light:text-neutral-500 light:hover:border-neutral-400 light:hover:text-neutral-900"
               aria-label="Log out"
             >
               <LogoutIcon />

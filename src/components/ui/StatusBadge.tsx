@@ -5,10 +5,10 @@ import { motion } from "motion/react";
 export type StatusVariant = "success" | "pending" | "submitted" | "failed";
 
 const VARIANT_CLASSES: Record<StatusVariant, string> = {
-  success: "border-emerald-500/30 bg-emerald-500/10 text-emerald-400",
-  pending: "border-amber-500/30 bg-amber-500/10 text-amber-400",
-  submitted: "border-indigo-500/30 bg-indigo-500/10 text-indigo-300",
-  failed: "border-pink-500/30 bg-pink-500/10 text-pink-400",
+  success: "border-emerald-500/30 bg-emerald-500/10 text-emerald-400 light:text-emerald-700",
+  pending: "border-amber-500/30 bg-amber-500/10 text-amber-400 light:text-amber-700",
+  submitted: "border-indigo-500/30 bg-indigo-500/10 text-indigo-300 light:text-indigo-700",
+  failed: "border-pink-500/30 bg-pink-500/10 text-pink-400 light:text-pink-700",
 };
 
 export default function StatusBadge({

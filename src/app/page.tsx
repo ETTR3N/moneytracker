@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { getDashboardData } from "@/lib/data";
-import { formatMoney } from "@/lib/currency";
+import { formatMoney, CURRENCIES } from "@/lib/currency";
 import StatCard from "@/components/dashboard/StatCard";
 import ChartCard from "@/components/dashboard/ChartCard";
+import CurrencySwitcher from "@/components/dashboard/CurrencySwitcher";
 import AnimatedList from "@/components/AnimatedList";
 
 export default async function DashboardPage() {
@@ -17,13 +18,16 @@ export default async function DashboardPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight text-neutral-50 sm:text-4xl">
-          Dashboard
-        </h1>
-        <p className="mt-1 text-sm text-neutral-500">
-          Everything converted to {currency}. Update it anytime in Settings.
-        </p>
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-50 sm:text-4xl light:text-neutral-900">
+            Dashboard
+          </h1>
+          <p className="mt-1 text-sm text-neutral-500">
+            Everything converted to {currency}.
+          </p>
+        </div>
+        <CurrencySwitcher currencies={CURRENCIES} current={currency} />
       </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
@@ -59,10 +63,10 @@ export default async function DashboardPage() {
       />
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <section className="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-5 sm:p-6">
+        <section className="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-5 sm:p-6 light:border-neutral-200 light:bg-white">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-neutral-200">Accounts</h2>
-            <Link href="/accounts" className="text-xs font-medium text-emerald-400 hover:text-emerald-300">
+            <h2 className="text-sm font-semibold text-neutral-200 light:text-neutral-800">Accounts</h2>
+            <Link href="/accounts" className="text-xs font-medium text-emerald-400 hover:text-emerald-300 light:text-emerald-600 light:hover:text-emerald-700">
               Manage →
             </Link>
           </div>
@@ -72,8 +76,8 @@ export default async function DashboardPage() {
             <AnimatedList>
               {data.accountBalances.map((account) => (
                 <div key={account.id} className="flex items-center justify-between gap-3 text-sm">
-                  <span className="min-w-0 truncate text-neutral-200">{account.name}</span>
-                  <span className="shrink-0 font-medium tabular-nums text-neutral-400">
+                  <span className="min-w-0 truncate text-neutral-200 light:text-neutral-700">{account.name}</span>
+                  <span className="shrink-0 font-medium tabular-nums text-neutral-400 light:text-neutral-500">
                     {formatMoney(account.balanceMinor, account.currency)}
                   </span>
                 </div>
@@ -82,12 +86,12 @@ export default async function DashboardPage() {
           )}
         </section>
 
-        <section className="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-5 sm:p-6">
+        <section className="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-5 sm:p-6 light:border-neutral-200 light:bg-white">
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-neutral-200">
+            <h2 className="text-sm font-semibold text-neutral-200 light:text-neutral-800">
               Upcoming subscriptions
             </h2>
-            <Link href="/subscriptions" className="text-xs font-medium text-emerald-400 hover:text-emerald-300">
+            <Link href="/subscriptions" className="text-xs font-medium text-emerald-400 hover:text-emerald-300 light:text-emerald-600 light:hover:text-emerald-700">
               Manage →
             </Link>
           </div>
@@ -97,8 +101,8 @@ export default async function DashboardPage() {
             <AnimatedList>
               {data.upcomingSubscriptions.map((sub) => (
                 <div key={sub.id} className="flex items-center justify-between gap-3 text-sm">
-                  <span className="min-w-0 truncate text-neutral-200">{sub.name}</span>
-                  <span className="shrink-0 whitespace-nowrap font-medium tabular-nums text-neutral-400">
+                  <span className="min-w-0 truncate text-neutral-200 light:text-neutral-700">{sub.name}</span>
+                  <span className="shrink-0 whitespace-nowrap font-medium tabular-nums text-neutral-400 light:text-neutral-500">
                     {formatMoney(sub.amountMinor, sub.currency)} ·{" "}
                     {new Date(sub.nextBillingDate).toLocaleDateString()}
                   </span>

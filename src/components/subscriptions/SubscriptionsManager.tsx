@@ -66,7 +66,7 @@ export default function SubscriptionsManager({
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-neutral-50">
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-50 light:text-neutral-900">
             Subscriptions
           </h1>
           <p className="mt-1 text-sm text-neutral-500">
@@ -126,13 +126,13 @@ export default function SubscriptionsManager({
                 key={sub.id}
                 className={`flex flex-col gap-4 rounded-3xl border p-5 transition-opacity sm:flex-row sm:items-center sm:justify-between ${
                   sub.active
-                    ? "border-neutral-800 bg-neutral-900/60"
-                    : "border-neutral-800 bg-neutral-900/30 opacity-80"
+                    ? "border-neutral-800 bg-neutral-900/60 light:border-neutral-200 light:bg-white"
+                    : "border-neutral-800 bg-neutral-900/30 opacity-80 light:border-neutral-200 light:bg-neutral-50"
                 }`}
               >
                 <div>
                   <div className="mb-1.5 flex flex-wrap items-center gap-2">
-                    <p className="font-medium text-neutral-100">{sub.name}</p>
+                    <p className="font-medium text-neutral-100 light:text-neutral-900">{sub.name}</p>
                     <StatusBadge
                       variant={sub.active ? "success" : "pending"}
                       label={sub.active ? "Active" : "Paused"}

@@ -36,7 +36,7 @@ export default function AccountsManager({
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-neutral-50">
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-50 light:text-neutral-900">
             Accounts
           </h1>
           <p className="mt-1 text-sm text-neutral-500">
@@ -128,11 +128,11 @@ export default function AccountsManager({
                 className={`flex flex-col gap-3 ${cardClass} p-5 sm:flex-row sm:items-center sm:justify-between`}
               >
                 <div>
-                  <p className="font-medium text-neutral-100">{account.name}</p>
+                  <p className="font-medium text-neutral-100 light:text-neutral-900">{account.name}</p>
                   <p className="text-sm text-neutral-500">{account.currency}</p>
                 </div>
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="text-lg font-bold tabular-nums text-neutral-50">
+                  <span className="text-lg font-bold tabular-nums text-neutral-50 light:text-neutral-900">
                     {formatMoney(account.balanceMinor, account.currency)}
                   </span>
                   <Button

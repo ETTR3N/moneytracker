@@ -37,7 +37,7 @@ export default function ToastProvider({ children }: { children: React.ReactNode 
               key={toast.id}
               variant={toast.variant}
               label={toast.label}
-              className="pointer-events-auto max-w-full bg-neutral-950 shadow-lg shadow-black/40"
+              className="pointer-events-auto max-w-full bg-neutral-950 shadow-lg shadow-black/40 light:bg-white light:shadow-neutral-300/60"
             />
           ))}
         </AnimatePresence>

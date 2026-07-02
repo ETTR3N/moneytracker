@@ -52,7 +52,7 @@ export default function TransactionsManager({
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-neutral-50">
+          <h1 className="text-3xl font-bold tracking-tight text-neutral-50 light:text-neutral-900">
             Transactions
           </h1>
           <p className="mt-1 text-sm text-neutral-500">
@@ -120,10 +120,10 @@ export default function TransactionsManager({
             ) : (
               <div
                 key={tx.id}
-                className="flex flex-col gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/60 px-4 py-3 transition-colors hover:border-neutral-700 sm:flex-row sm:items-center sm:justify-between"
+                className="flex flex-col gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/60 px-4 py-3 transition-colors hover:border-neutral-700 sm:flex-row sm:items-center sm:justify-between light:border-neutral-200 light:bg-white light:hover:border-neutral-300"
               >
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-medium text-neutral-100">
+                  <p className="truncate text-sm font-medium text-neutral-100 light:text-neutral-900">
                     {tx.description || tx.category || "Transaction"}
                   </p>
                   <p className="text-xs text-neutral-500">
@@ -134,7 +134,9 @@ export default function TransactionsManager({
                 <div className="flex flex-wrap items-center gap-3">
                   <span
                     className={`text-sm font-bold tabular-nums ${
-                      tx.amountMinor < 0 ? "text-rose-400" : "text-emerald-400"
+                      tx.amountMinor < 0
+                        ? "text-rose-400 light:text-rose-600"
+                        : "text-emerald-400 light:text-emerald-600"
                     }`}
                   >
                     {formatMoney(tx.amountMinor, tx.account.currency)}

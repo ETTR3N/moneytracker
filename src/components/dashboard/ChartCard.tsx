@@ -11,6 +11,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
+import { useTheme } from "@/components/ThemeProvider";
 
 type MonthPoint = { key: string; label: string; amountMinor: number };
 
@@ -75,10 +76,13 @@ export default function ChartCard({
   const tab = tabs.find((t) => t.id === activeTab) ?? tabs[0];
   const chartData = tab.data.map((d) => ({ label: d.label, amount: d.amountMinor / 100 }));
   const gradientId = `chart-gradient-${tab.id}`;
+  const { theme } = useTheme();
+  const gridColor = theme === "dark" ? "#262626" : "#e5e5e5";
+  const axisColor = theme === "dark" ? "#737373" : "#a3a3a3";
 
   return (
-    <section className="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-4 sm:p-6">
-      <div className="mb-6 flex w-fit items-center gap-2 rounded-full border border-neutral-800 bg-neutral-950/60 p-1">
+    <section className="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-4 sm:p-6 light:border-neutral-200 light:bg-white">
+      <div className="mb-6 flex w-fit items-center gap-2 rounded-full border border-neutral-800 bg-neutral-950/60 p-1 light:border-neutral-200 light:bg-neutral-100">
         {tabs.map((t) => (
           <button
             key={t.id}
@@ -88,13 +92,15 @@ export default function ChartCard({
             {activeTab === t.id && (
               <motion.span
                 layoutId="chart-tab-pill"
-                className="absolute inset-0 rounded-full bg-neutral-100"
+                className="absolute inset-0 rounded-full bg-neutral-100 light:bg-neutral-900"
                 transition={{ type: "spring", stiffness: 500, damping: 35 }}
               />
             )}
             <span
               className={`relative z-10 ${
-                activeTab === t.id ? "text-neutral-950" : "text-neutral-400"
+                activeTab === t.id
+                  ? "text-neutral-950 light:text-white"
+                  : "text-neutral-400 light:text-neutral-500"
               }`}
             >
               {t.label}
@@ -119,10 +125,10 @@ export default function ChartCard({
                   <stop offset="100%" stopColor={tab.color} stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#262626" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke={gridColor} vertical={false} />
               <XAxis
                 dataKey="label"
-                stroke="#737373"
+                stroke={axisColor}
                 fontSize={11}
                 tickLine={false}
                 axisLine={false}
@@ -130,7 +136,7 @@ export default function ChartCard({
                 minTickGap={24}
               />
               <YAxis
-                stroke="#737373"
+                stroke={axisColor}
                 fontSize={11}
                 tickLine={false}
                 axisLine={false}

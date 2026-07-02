@@ -6,12 +6,14 @@ import { motion, type HTMLMotionProps } from "motion/react";
 type Variant = "primary" | "secondary" | "ghost" | "danger";
 
 const VARIANT_CLASSES: Record<Variant, string> = {
-  primary: "bg-white text-neutral-950 hover:bg-neutral-200",
+  primary:
+    "bg-white text-neutral-950 hover:bg-neutral-200 light:bg-neutral-900 light:text-white light:hover:bg-neutral-700",
   secondary:
-    "border border-neutral-700 text-neutral-200 hover:border-neutral-500 hover:bg-neutral-800",
-  ghost: "text-neutral-400 hover:bg-neutral-800 hover:text-neutral-100",
+    "border border-neutral-700 text-neutral-200 hover:border-neutral-500 hover:bg-neutral-800 light:border-neutral-300 light:text-neutral-700 light:hover:border-neutral-400 light:hover:bg-neutral-100",
+  ghost:
+    "text-neutral-400 hover:bg-neutral-800 hover:text-neutral-100 light:text-neutral-500 light:hover:bg-neutral-100 light:hover:text-neutral-900",
   danger:
-    "border border-red-900/60 text-red-400 hover:border-red-700 hover:bg-red-950/60",
+    "border border-red-900/60 text-red-400 hover:border-red-700 hover:bg-red-950/60 light:border-red-300 light:text-red-600 light:hover:border-red-400 light:hover:bg-red-50",
 };
 
 const SIZE_CLASSES = {
