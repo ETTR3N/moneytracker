@@ -11,6 +11,7 @@ const LINKS = [
   { href: "/accounts", label: "Accounts" },
   { href: "/transactions", label: "Transactions" },
   { href: "/subscriptions", label: "Subscriptions" },
+  { href: "/assistant", label: "Assistant" },
 ];
 
 export default function Nav() {

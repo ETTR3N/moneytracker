@@ -16,6 +16,10 @@ on a dashboard. Password-protected, built with Next.js + Prisma + PostgreSQL.
 - Currency conversion via [frankfurter.app](https://frankfurter.app) (free,
   no API key), cached for 6 hours
 - Single shared password gate (no user accounts) for personal deployments
+- Light/dark theme toggle
+- "Assistant" chat page that can see your real accounts, spending, and
+  subscriptions and answer questions about them, powered by Google's free
+  Gemini API
 
 ## Local development
 
@@ -37,6 +41,10 @@ on a dashboard. Password-protected, built with Next.js + Prisma + PostgreSQL.
    - `APP_PASSWORD` — the password you'll use to log in.
    - `SESSION_SECRET` — a random string used to sign the login session.
      Generate one with `openssl rand -base64 32`.
+   - `GOOGLE_GENERATIVE_AI_API_KEY` — a free API key for the Assistant chat
+     feature. Get one at [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
+     (sign in with a Google account, click "Create API key"). Free tier is
+     generous enough for personal use.
 
 3. Create the database tables:
 
@@ -59,8 +67,9 @@ on a dashboard. Password-protected, built with Next.js + Prisma + PostgreSQL.
 2. Create a free PostgreSQL database (e.g. on [Neon](https://neon.tech)) and
    copy its connection string.
 3. In [Vercel](https://vercel.com), import the repository as a new project.
-4. Add the same three environment variables from `.env.example`
-   (`DATABASE_URL`, `APP_PASSWORD`, `SESSION_SECRET`) in the Vercel project's
+4. Add the same environment variables from `.env.example`
+   (`DATABASE_URL`, `APP_PASSWORD`, `SESSION_SECRET`,
+   `GOOGLE_GENERATIVE_AI_API_KEY`) in the Vercel project's
    Settings → Environment Variables.
 5. Deploy. Vercel runs `npm install` (which also runs `prisma generate` via
    the `postinstall` script) and then `npm run build` automatically.
